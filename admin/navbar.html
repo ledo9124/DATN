@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .side-nav {
+            background-color: #1C3FAA;
+            top: 0;
+            bottom: 0;
+        }
+
+        .side-menu--active {
+            background-color: #E5E9FF;
+            color: #1C3FAA;
+        }
+
+        .side-menu:hover {
+            background-color: #2331A0;
+        }
+
+        .side-menu {
+            color: white;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .translate-half {
+            transform: translateX(-50%);
+        }
+
+        .nav-toggle {
+            background-color: #1C3FAA;
+        }
+
+        .nav-toggle:hover {
+            background-color: #2331A0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex flex-col md:flex-row mt-20 md:mt-0">
+        <!-- BEGIN: Side Menu -->
+        <button class="nav-toggle md:hidden fixed top-4 left-4 z-50 text-white p-2 rounded"
+            onclick="toggleNav()">☰</button>
+        <nav
+            class="side-nav fixed md:relative z-40 h-full md:h-auto w-64 md:w-64 transform md:translate-x-0 -translate-x-full md:-translate-x-0 transition-transform duration-300 ease-in-out">
+            <a href="#" class="flex items-center pl-5 pt-4">
+                <img alt="Logo" class="w-6" src="dist/images/logo.svg" />
+                <span class="hidden xl:block text-white text-lg ml-3">Rubick</span>
+            </a>
+            <div class="side-nav__divider my-6"></div>
+            <ul>
+                <li><a href="#" class="side-menu side-menu--active flex items-center py-2 px-5">Dashboard</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Menu Layout</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">E-Commerce</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Inbox</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">File Manager</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Point of Sale</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Chat</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Post</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Calendar</a></li>
+                <li class="side-nav__divider my-6"></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Crud</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Users</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Profile</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Pages</a></li>
+                <li class="side-nav__divider my-6"></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Components</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Forms</a></li>
+                <li><a href="#" class="side-menu flex items-center py-2 px-5">Widgets</a></li>
+            </ul>
+        </nav>
+        <div id="overlay" class="overlay hidden fixed inset-0 z-30 md:hidden" onclick="toggleNav()"></div>
+    </div>
+
+    <script>
+        function toggleNav() {
+            const nav = document.querySelector('.side-nav');
+            const overlay = document.getElementById('overlay');
+            const toggleButton = document.querySelector('.nav-toggle');
+
+            if (nav.classList.contains('-translate-x-full')) {
+                nav.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                toggleButton.classList.add('hidden');
+            } else {
+                nav.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                toggleButton.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>
